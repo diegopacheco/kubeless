@@ -9,7 +9,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Shopify/sarama"
 	"github.com/bsm/sarama-cluster"
 	"github.com/kubeless/kubeless/pkg/utils"
 	"github.com/sirupsen/logrus"
@@ -43,7 +42,6 @@ func createConsumerProcess(brokers, topic, funcName, ns, consumerGroupID string,
 
 	config.Consumer.Return.Errors = true
 	config.Group.Return.Notifications = true
-	config.Consumer.Offsets.Initial = sarama.OffsetNewest
 
 	// Init consumer, consume errors & messages
 	// consumer is grouped and labeled by functionID to receive load-balanced messages
